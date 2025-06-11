@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Methodology</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background-color: #d9edf7;
+      font-weight: bold;
+      width: 50%;
+    }
+    td pre {
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    td {
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-home">Home</a>
+  <a href="methodology.html" class="nav-methodology">Methodology</a>
+  <a href="latlong.html" class="nav-tiapit">First Triple: Latitude and Longitude</a>
+  <a href="conservationstatus.html" class="nav-conservation">Second Triple: Conservation Status</a>
+  <a href="wikidatawebsite.html" class="nav-wikidata">Third Triple: Correspondent Wikidata Page</a>
+  <a href="conclusion.html" class="nav-conclusion">Conclusion</a>
+</nav>
+
+<h1>Methodology</h1>
+
+<p>This second section is devoted to a <strong>detailed explanation of the methodology</strong> adopted throughout the project.</p>
+
+<p>As an initial step, we identified a clearly defined area of focus that aligned with our research interests. For the purposes of this study, we chose to concentrate on <strong>Archaeological Sites</strong> (as already mentioned in the home page), given their historical significance and relevance within the broader context of cultural heritage.</p>
+
+<p>Accordingly, we began our research within the ArCo dataset by designing and executing the following <strong>SPARQL queries</strong>.</p>
+
+<table>
+  <tr>
+    <th>SPARQL Query</th>
+    <th>Result</th>
+  </tr>
+  <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT DISTINCT ?cp ?label ?depiction
+WHERE {
+  ?cp rdfs:label ?label ;
+      rdf:type arco:CulturalProperty .
+  FILTER(REGEX(?label , "parco archeologico" , "i"))
+  OPTIONAL { ?cp foaf:depiction ?depiction }
+}
+ORDER BY (?label)
+LIMIT 100
+</pre>
+    </td>
+    <td>
+      The query retrieves up to 100 cultural properties that are labeled as “parco archeologico”, 
+      along with their labels and any available images, sorted alphabetically by name. <br><br>
+      However, the results of this query were too general for our investigation, so we decided to formulate another query that investigated the class <strong>ArchaeologicalParks</strong>.<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel+%3Fdepiction%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3ACulturalProperty+.%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0AOPTIONAL+%7B%3Fcp+foaf%3Adepiction+%3Fdepiction%7D%0D%0A%7D%0D%0AORDER+BY+%28%3Flabel%29%0D%0ALIMIT+100%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT DISTINCT ?cp ?label ?depiction
+WHERE {
+  ?cp rdfs:label ?label ;
+      rdf:type arco:ArchaeologicalProperty .
+  FILTER(REGEX(?label , "parco archeologico" , "i"))
+  OPTIONAL { ?cp foaf:depiction ?depiction }
+}
+ORDER BY (?label)
+LIMIT 100
+</pre>
+    </td>
+    <td>
+      Thanks to the approach we adopted, the expected results were achieved. At this point, we decided to focus the research on a selection of Italian regions. We began by investigating Sicily and Sardinia, as we found it particularly interesting to conduct a study on Italy’s major islands.<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel+%3Fdepiction%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3AArchaeologicalProperty+.%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0AOPTIONAL+%7B%3Fcp+foaf%3Adepiction+%3Fdepiction%7D%0D%0A%7D%0D%0AORDER+BY+%28%3Flabel%29%0D%0ALIMIT+100%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT DISTINCT ?cp ?label
+WHERE {
+  ?cp rdfs:label ?label ;
+      rdf:type arco:ArchaeologicalProperty .
+  { ?cp arco:regionIdentifier "20" }
+  UNION
+  { ?cp arco:regionIdentifier "19" }
+  FILTER(REGEX(?label , "parco archeologico" , "i"))
+}
+LIMIT 100
+</pre>
+    </td>
+    <td>
+      Unfortunately, this query does not return any results, as the ArCo database does not contain archaeological parks associated with the regions of Sicily (regional identifier: 19) and Sardinia (regional identifier: 20).<br><br>
+      Therefore, I decided to pursue another line of research, this time focusing on two neighboring southern Italian regions: Apulia (regional identifier: 16) and Basilicata (regional identifier: 17).<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3AArchaeologicalProperty%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2220%22+%7D%0D%0AUNION%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2219%22+%7D%0D%0A%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0A%7D%0D%0AORDER+BY+%3Flabel%0D%0ALIMIT+100%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT DISTINCT ?cp ?label
+WHERE {
+  ?cp rdfs:label ?label ;
+      rdf:type arco:ArchaeologicalProperty .
+  { ?cp arco:regionIdentifier "16" }
+  UNION
+  { ?cp arco:regionIdentifier "17" }
+  FILTER(REGEX(?label , "parco archeologico" , "i"))
+}
+ORDER BY ?label
+LIMIT 100
+</pre>
+    </td>
+    <td>
+      The query aimed at identifying archaeological parks in Apulia and Basilicata yielded interesting results: the database contains five archaeological parks located in Apulia and only one in Basilicata.<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3AArchaeologicalProperty%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2216%22+%7D%0D%0AUNION%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2217%22+%7D%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0A%7D%0D%0AORDER+BY+%3Flabel%0D%0ALIMIT+100%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT (COUNT(DISTINCT ?cp) AS ?count)
+WHERE {
+  ?cp rdf:type arco:ArchaeologicalProperty ;
+      rdfs:label ?label ;
+      arco:regionIdentifier "16" .
+  FILTER(REGEX(LCASE(STR(?label)), "parco archeologico"))
+}
+</pre>
+    </td>
+    <td>
+      The purpose of the following query was to specifically count the archaeological parks located in the Apulia region as a first step. As can be seen from the results, there are five of them.<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+%28COUNT%28DISTINCT+%3Fcp%29+AS+%3Fcount%29%0D%0AWHERE+%7B%0D%0A++%3Fcp+rdf%3Atype+arco%3AArchaeologicalProperty+%3B%0D%0A++++++rdfs%3Alabel+%3Flabel+%3B%0D%0A++++++arco%3AregionIdentifier+%2216%22+.%0D%0A++FILTER%28REGEX%28LCASE%28STR%28%3Flabel%29%29%2C+%22parco+archeologico%22%29%29%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+  
+   <tr>
+    <td>
+<pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT (COUNT(DISTINCT ?cp) AS ?count)
+WHERE {
+  ?cp rdf:type arco:ArchaeologicalProperty ;
+      rdfs:label ?label ;
+      arco:regionIdentifier "17" .
+  FILTER(REGEX(LCASE(STR(?label)), "parco archeologico"))
+}
+</pre>
+    </td>
+    <td>
+      The purpose of our last query was to specifically count the archaeological parks located in the Basilicata. As can be seen from the results, there is just one.<br><br>
+      <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+%28COUNT%28DISTINCT+%3Fcp%29+AS+%3Fcount%29%0D%0AWHERE+%7B%0D%0A++%3Fcp+rdf%3Atype+arco%3AArchaeologicalProperty+%3B%0D%0A++++++rdfs%3Alabel+%3Flabel+%3B%0D%0A++++++arco%3AregionIdentifier+%2217%22+.%0D%0A++FILTER%28REGEX%28LCASE%28STR%28%3Flabel%29%29%2C+%22parco+archeologico%22%29%29%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
+    </td>
+  </tr>
+  
+</table></br></br></br>
+
+<p style="margin-top: 20px;">
+  Subsequently, in order to enrich the data related to the archaeological parks we had selected, we decided to consult <strong>ChatGPT</strong>, which provided us with the following response. To formulate this question, we employed the <strong>zero-shot prompting</strong> technique.
+</p>
+
+</div>
+
+<div class="image">
+  <img src="IMG/IMG_2032.PNG" alt="Archaeological Site">
+</div>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="IMG/IMG_2035.JPG" alt="Archaeological Site 2" 
+       style="width: 45%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+  <img src="IMG/IMG_2036.JPG" alt="Archaeological Site 3" 
+       style="width: 45%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+<p style="margin-top: 20px;">
+
+    By reviewing the results provided by ChatGPT and comparing them with the information already available in the ArCo database regarding the archaeological parks we selected, we have decided to add <strong>three new triples</strong>—currently missing—for each park.
+  </p>
+
+  <p>
+    The <strong>first triple</strong> concerns the precise geographical coordinates of the selected archaeological parks, expressed in terms of latitude and longitude. For this, we will use the predicate <strong><em>geo:lat/geo:long</em></strong>, already present in ArCo.
+  </p>
+
+  <p>
+    The <strong>second triple</strong> refers to the conservation status of the parks, a fundamental aspect in this context. We will introduce new triples using the ArCo predicate <strong><em>a-dd:ConservationStatusType</em></strong>.
+  </p>
+
+  <p>
+    The <strong>third triple</strong> we propose involves introducing links to equivalent entities in external datasets. We have chosen to work with <strong>Wikidata</strong>. This new triple will use the predicate <strong><em>owl:sameAs</em></strong>, which is also already included in ArCo.
+  </p>
+</div>
+
+<p style="margin-top: 50px;">
+
+<p><strong>RESEARCH FOR THE FIRST TRIPLE</strong><p>
+    
+<p>Regarding the insertion of the first triple, we first verified that the predicate <strong>geo:lat / geo:long</strong> provided by ChatGPT was indeed the same one used in ARCO.After conducting some checks, we confirmed that the LLM was providing accurate information. Therefore, in order to propose this triple, <strong>we asked both LLMs</strong> to provide us with the <strong>precise geographic coordinates</strong>. In this case, we decided to use the <strong>zero-shot prompting tecnique.</strong></p>
+
+<p><strong>Q: Would you be able to provide me the exact geographical coordinates (latitude and longitude) of these archeological parks? Parco archeologico di Saturo, Parco archeologico delle Mura Messapiche di Manduria, Parco archeologico di Siponto, Parco archeologico di Egnazia, Parco archeologico di Canne della Battaglia and Parco archeologico di Metaponto</strong></p>
+<p><strong>A:</strong>
+
+<table>
+  <tr>
+    <th>ChatGPT</th>
+    <th>Gemini</th>
+   </tr>
+  <tr>
+    <td>
+	<p><strong>Parco Archeologico di Saturo</strong> (Leporano, TA)
+     <strong>Latitude</strong>: 40°22′17″N (≈40.3714 N)
+	 <strong>Longitude</strong>: 17°18′20″E (≈17.3056 E)</p>
+	
+     <p><strong>Parco Archeologico delle Mura Messapiche di Manduria</strong> (Manduria, TA)
+	 <strong>Latitude</strong>: 40°24′20.15″N (≈40.4056 N)
+	 <strong>Longitude</strong>: 17°38′38.72″E (≈17.6441 E)</p>
+	  
+	 <p><strong>Parco Archeologico di Siponto</strong> (frazione di Manfredonia, FG)
+	 <strong>Latitude</strong>: 41°36′25″N (≈41.6069 N)
+	 <strong>Longitude</strong>: 15°53′45″E (≈15.8958 E)</p>
+
+     <p><strong>Parco Archeologico di Egnazia</strong> (Savelletri/Fasano, BR)
+	 <strong>Latitude</strong>: 40°53′13.84″ N (≈40.8872 N)
+	 <strong>Longitude</strong>: 17°23′25.75″ E (≈17.3905 E)</p>
+	 
+	 <p><strong>Parco Archeologico di Canne della Battaglia</strong> (Barletta‑Andria‑Trani, BT)
+	 <strong>Latitude</strong>: 41°17′46.8″N (≈41.2963 N)
+	 <strong>Longitude</strong>: 16°09′06.9″E (≈16.1519 E)</p>
+	 
+	 <p><strong>Parco Archeologico di Metaponto</strong>(Bernalda/Metaponto, MT)
+	 <strong>Latitude</strong>: ~40°24′55″N (≈40.4153 N)
+	 <strong>Longitude</strong>: ~16°49′01.8″E (≈16.8172 E)</p>
+</td>
+
+<td>Certainly, here is the information I found on the archaeological parks you requested. Unfortunately, I cannot directly extract the exact geographical coordinates (latitude and longitude), but I can provide you with the addresses and Google Maps links, which should be helpful for locating them:
+
+<p><strong>Archaeological Park of Saturo</strong>: Località, Viale Saturo, 74020 Leporano TA, Italy.</p>
+
+<p><strong>Archaeological Park of the Messapian Walls of Manduria</strong>: Piazza Scegnu, 74024 Manduria TA, Italy.</p>
+
+<p><strong>Archaeological Park "Basiliche di Siponto"</strong>: Viale Giuseppe di Vittorio, 71043 Manfredonia FG, Italy.</p> 
+
+<p><strong>Archaeological Park of Egnazia</strong>: Via degli Scavi, 86, 72015 Fasano BR, Italy.</p> 
+
+<p><strong>Archaeological Park of Canne della Battaglia</strong>: SP142, 76121 Barletta BT, Italy.</p> 
+
+<p><strong>Archaeological Park of the Urban Area of Metaponto</strong>: 75012 Bernalda MT, Italy.</p>
+
+<p>I hope this information is useful to you! If you have any other questions, please let me know.</p>
+</td>
+  </tr>
+ <tr>
+    <td>
+	<strong>Evaluation:</strong> ChatGPT returned precisely what we had requested, namely the accurate geographical coordinates; thus, it fully satisfied our query. Obviously, it will be necessary to verify whether the geographical coordinates provided are accurate.
+</td> 
+<td>
+    <strong>Evaluation:</strong> In this instance, Gemini did not directly provide the requested information; instead, it furnished Google Maps links for the specified locations. Nevertheless, its output proved particularly useful, as we utilized these links for inclusion in our triples, naturally, after verifying their accuracy.
+</td>
+  </tr>
+</table></br></br></br>
+<p>What we subsequently did was to <strong>extract the exact geographical coordinates from the Google Maps links</strong> provided by Gemini.</p>
+
+<p>Unfortunately, another issue then arose: the URLs for the exact geographic coordinates were too long. To resolve this, we used the <strong>Bit.ly</strong> service to shorten the link, making it more suitable for inclusion in the triple.</p>
+ <p><strong>To discover the detailed structure of the triples we have produced</strong>
+<a href="latlong.html" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Click Here</a></p>
+
+<p style="margin-top: 50px;">
+
+<p><strong>RESEARCH FOR THE SECOND TRIPLE</strong><p>
+
+<p>Subsequently, we focused on proposing the insertion of a triple related to the conservation status. ChatGPT's response had provided us with an interesting insight on the general condition, but we aimed to include the type of conservation status, which required a more specific predicate.</p> 
+
+<p>For this reason, using the technique of <strong>zero-shot prompting</strong>, we asked both ChatGPT and Gemini which label was used in ARCO to indicate the <strong>type of conservation status</strong>, providing as an example the label used in ARCO to indicate the material. Presented below are the question posed to the LLMs and their corresponding responses.</strong></p>
+
+<p><strong>Q: Given that on ArCo the property for material is arco-dd:hasMaterial, what is the property for the conservation status type of cultural properties?</strong></p>
+<p><strong>A:</strong>
+<table>
+  <tr>
+    <th>ChatGPT</th>
+    <th>Gemini</th>
+   </tr>
+  <tr>
+    <td>
+	The property for the conservation status type of cultural properties in ArCo is arco-dd:hasConservationStatusType.
+	
+      <p>This property is used to specify the type of conservation status (e.g., “good”, “poor”, “restored”) within the conservation status description, which itself is linked to the cultural property via arco-dd:hasConservationStatus.</p>
+	  
+      <p>So the full path is:</p>
+
+      <p>Cultural property → arco-dd:hasConservationStatus → Conservation Status → arco-dd:hasConservationStatusType → Conservation Status Type (e.g., a concept from a controlled vocabulary).</p>
+</td>
+    <td>
+    On ArCo, the property used to describe the conservation status of cultural properties is arco-dd:hasConservationStatus.
+	  
+	  <p>This property links a cultural property to an instance of arco-dd:ConservationStatus, which then has a core:hasType property that specifies the arco-dd:ConservationStatusType (e.g., GoodConservationStatus, MediocreConservationStatus, etc.).</p>
+	  
+	  <p>So, the full path to get to the type of conservation status would typically be:</p>
+	  
+	  <p>CulturalProperty arco-dd:hasConservationStatus ?conservationStatusInstance.
+	  ?conservationStatusInstance core:hasType ?conservationStatusType .</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<strong>Evaluation:</strong> The clarity of this LLM's response is undeniable, providing the sought-after answer promptly before delving into comprehensive details. It is worth noting, however, that it does not include, despite not being explicitly requested, any illustrative examples of the conservation status types available on ArCo.
+</td>
+    <td>
+    <strong>Evaluation:</strong> Unlike the former, this LLM's response does not proceed directly to the desired information. Instead, it first presents a broader property, only then disclosing the specific property that was requested. Moreover, it includes several illuminating examples, which are beneficial for grasping the array of conservation status types found in ArCo.
+</td>
+  </tr>
+ </table></br></br></br>
+ <p style="margin-top: 10px;">
+ 
+ <p>Continuing our data collection concerning the conservation status of archaeological parks, and employing the <strong>few-shot prompting technique</strong>, we asked ChatGPT and Gemini to <strong>provide information regarding the parks' conservation status</strong>, including within the prompt the ArCo classifications to be assigned to these archaeological parks.</p>
+ 
+ <p>The six archaeological parks were divided into <strong>two distinct groups</strong>, with three allocated for analysis to Chiara and the remaining three to Benedetta.</p>
+ 
+ <p><strong>Chiara's question to ChatGPT and Gemini</strong>: </p>
+ 
+ <p><strong>I am trying to enrich ArCo, also known as, Architettura della Conoscenza regarding the conservation status of archaeological sites. Knowing that the arco-dd: ConservationStatusType can be: BadConservationStatus, DecentConservationStatus, GoodConservationStatus, MediocreConservationStatus and UnavailableConservationStatus.</p>
+
+<p>Here are some examples:</p>
+<p>Archaeological Park: Parco Archeologico di Ercolano,
+Conservation Status: GoodConservationStatus</p>
+
+<p>Archaeological Park: Area Archeologica di Velia,
+Conservation Status: DecentConservationStatus</p>
+
+<p>Now, what would you rate the conservation status of these parks based on the provided types?
+Archaeological Park: Parco archeologico di Saturo,
+Archaeological Park: Parco archeologico delle Mura Messapiche di Manduria,
+Archaeological Park: Parco archeologico di Siponto.</strong></p>
+ 
+ <p>The <strong>answers of the LLMs</strong> were:</p>
+ 
+ <p><strong>ChatGPT</strong></p>
+ 
+ <div class="image">
+  <img src="IMG/IMG_2030.JPG" alt="Saturo">
+</div>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="IMG/IMG_2031.JPG" alt="Mura Messapiche di Manduria" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+  <img src="IMG/IMG_2033.JPG" alt="Siponto" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+</div>
+<p style="margin-top: 40px;">
+
+<p><strong>Gemini</strong></p>
+
+<div class="image">
+  <img src="IMG/IMG_2037.JPG" alt="Gemini Response 1">
+</div>
+
+<p style="margin-top: 50px;">
+<p><strong>Evaluation of the answers:</strong> In this instance, it is important to note how the two LLMs provide <strong>differing responses concerning the Parco archeologico di Saturo</strong>. Consequently, it was necessary to <strong>conduct further internet research</strong> to ascertain which of the two classifications might be more appropriate for the Parco archeologico di Saturo. Regarding other aspects of the responses, both were highly exhaustive, even reporting whether restoration work had been carried out.</p>
+
+<p>Furthermore, <strong>ChatGPT</strong> also provided information regarding the <strong>sources</strong> from which it retrieved the data (although this was not requested), whereas Gemini did not.</p>
+
+<p>It is now necessary to focus on <strong>determining the conservation status of the Parco archeologico di Saturo.</strong>
+<p>Despite announced restoration works and projects (such as those restarted in <strong>October 2024</strong>, with inauguration initially planned for September 2024), the current situation of the Archaeological Park of Saturo presents <strong>severe critical issues</strong>. The reopening was limited to a single day (June 19, 2024) for guided tours of the construction site, and as of today (June 2025), a simple Google search reveals <strong>the park is temporarily closed</strong> and inaccessible to tourists.<p>
+
+<p>Furthermore, research from <strong>2022</strong> indicates that the Park was overrun by weeds, posing a high risk of fires due to high temperatures, and showed remains of food and used beverages. Unauthorised crossings of the cliff through the Park were also observed, with archaeological remains being trampled, even by bicycles, highlighting a <strong>serious lack of control and protection</strong>.</p>
+
+<p>Notwithstanding the efforts and funding for ongoing restoration work, the actual usability, safety, and protection of the Parco archeologico di Saturo are severely compromised. The continued closure to the public and persistent management and degradation issues confirm a classification of <strong>BadConservationStatus</strong>, <strong>confirming ChatGPT evaluation</strong>.</p>
+
+<p style="margin-top: 50px;">
+
+<p>Now, let us analyze the responses for the other three archaeological parks from the two LLMs.</p>
+
+<p><strong>Benedetta's question to ChatGPT and Gemini</strong>: </p>
+ 
+ <p><strong>I am trying to enrich ArCo, also known as, Architettura della Conoscenza regarding the conservation status of archaeological sites. Knowing that the arco-dd: ConservationStatusType can be: BadConservationStatus, DecentConservationStatus, GoodConservationStatus, MediocreConservationStatus and UnavailableConservationStatus.</p>
+
+<p>Here are some examples:</p>
+<p>Archaeological Park: Parco Archeologico di Ercolano,
+Conservation Status: GoodConservationStatus</p>
+
+<p>Archaeological Park: Area Archeologica di Velia,
+Conservation Status: DecentConservationStatus</p>
+
+<p>Now, what would you rate the conservation status of these parks based on the provided types?
+Archaeological Park: Parco archeologico di Egnazia,
+Archaeological Park: Parco archeologico di Canne della Battaglia,
+Archaeological Park: Parco archeologico di Metaponto.</strong></p>
+ 
+ <p>The <strong>answers of the LLMs</strong> were:</p>
+ 
+ <p><strong>ChatGPT</strong></p>
+ 
+ <div class="image">
+  <img src="IMG/IMG_2038.JPG" alt="Egnazia">
+</div>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="IMG/IMG_2039.JPG" alt="Canne della Battaglia" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+  <img src="IMG/IMG_2040.JPG" alt="Metaponto" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+</div>
+ 
+ <p style="margin-top: 40px;">
+
+<p><strong>Gemini</strong></p>
+
+<div class="image">
+  <img src="IMG/IMG_2041.JPG" alt="Gemini Response 2">
+</div>
+
+<p style="margin-top: 50px;">
+<p><strong>Evaluation of the answers:</strong>Firstly, this time we observe an <strong>exact correspondence</strong> regarding the <strong>conservation status</strong> provided by both LLMs.</p> 
+
+<p>Furthermore, <strong>ChatGPT</strong> chose to segment its responses by including <strong>helpful subheadings</strong> (for the last two parks).  <strong>Gemini</strong>, in turn, described all the parks with comparable <strong>attention to detail</strong>.</p> 
+
+<p>In this instance, <strong>the responses from both ChatGPT and Gemini are exhaustive and meticulously crafted.</strong><p>
+<p><strong>To discover the detailed structure of the triples we have produced</strong>
+<a href="conservationstatus.html" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Click Here</a></p>
+
+<p style="margin-top: 50px;">
+
+<p><strong>RESEARCH FOR THE THIRD TRIPLE</strong><p>
+
+<p>Regarding the third triple, our aim was to insert a <strong>link connecting our ArCo resource to an equivalent or nearly equivalent resource on Wikidata</strong>.</p>
+
+<p>To achieve this, we searched for the names of the archaeological parks selected for our research within <strong>Wikidata's search bar</strong>. Unfortunately, the <strong>Parco archeologico di Canne della Battaglia</strong> was the only park for which we found <strong>no corresponding entry</strong> whatsoever on Wikidata; therefore, it will not be included in the proposed triples in this instance.<p>
+
+<p>In this manner, we were able to <strong>link two equivalent resources present in two different databases through a single triple</strong>. Useful data concerning the archaeological parks are embedded within these links.</p>
+
+<p><strong>To discover the detailed structure of the triples we have produced</strong>
+<a href="wikidatawebsite.html" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Click Here</a></p>
+<script>
+  const page = window.location.pathname.split("/").pop();
+  const linkMap = {
+    "index.html": ".nav-home",
+    "methodology.html": ".nav-methodology",
+    "latlong.html": ".nav-tiapit",
+    "conservationstatus.html": ".nav-conservation",
+    "wikidatawebsite.html": ".nav-wikidata",
+    "conclusion.html": ".nav-conclusion"
+  };
+  const selector = linkMap[page];
+  if (selector) document.querySelector(selector).classList.add("active");
+</script>
+
+</body>
+</html>

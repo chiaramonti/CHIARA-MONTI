@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #e6f9e6; /* verde chiaro */
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+  color: darkred;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+nav {
+  background-color: #ccc;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  background-color: #ccc;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+nav a.active {
+  background-color: #87cefa; /* azzurro */
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #aaa;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.dropdown button {
+  background-color: darkred;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.links a {
+  margin: 4px 0;
+  text-decoration: none;
+  color: darkblue;
+}
+
+.placeholder-text {
+  margin-top: 20px;
+}
+
+.image {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.image img {
+  max-width: 50%; 
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Stile per la tabella RDF */
+.rdf-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+}
+
+.rdf-table td {
+  background-color: #f0f0f0; /* grigio chiaro */
+  font-family: monospace;
+  padding: 20px;
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .dropdown-content {
+    position: static;
+  }
+
+  .image img {
+    max-width: 100%;
+  }
+
+.rdf-triples {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  }
+
+.rdf-triples td {
+  background-color: #f0f0f0; /* grigio chiaro */
+  font-family: monospace;
+  padding: 20px;
+  white-space: pre-wrap; /* mantiene spazi e a capo */
+  border: 1px solid #ccc;
+  }
+}

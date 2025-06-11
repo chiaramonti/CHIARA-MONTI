@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conclusion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-home">Home</a>
+  <a href="methodology.html" class="nav-methodology">Methodology</a>
+  <a href="latlong.html" class="nav-tiapit">First Triple: Latitude and Longitude</a>
+  <a href="conservationstatus.html" class="nav-conservation">Second Triple: Conservation Status</a>
+  <a href="wikidatawebsite.html" class="nav-wikidata">Third Triple: Correspondent Wikidata Page</a>
+  <a href="conclusion.html" class="nav-conclusion">Conclusion</a>
+</nav>
+
+<h1>Conclusion</h1>
+<p>xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx...</p>
+
+<script>
+  const page = window.location.pathname.split("/").pop();
+  const linkMap = {
+    "index.html": ".nav-home",
+    "methodology.html": ".nav-methodology",
+    "latlong.html": ".nav-tiapit",
+    "conservationstatus.html": ".nav-conservation",
+    "wikidatawebsite.html": ".nav-wikidata",
+    "conclusion.html": ".nav-conclusion"
+  };
+  const selector = linkMap[page];
+  if (selector) document.querySelector(selector).classList.add("active");
+</script>
+
+</body>
+</html>
