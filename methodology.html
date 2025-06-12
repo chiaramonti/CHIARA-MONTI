@@ -553,13 +553,23 @@ Archaeological Park: Parco archeologico di Metaponto.</strong></p>
 
 <p><strong>RESEARCH FOR THE THIRD TRIPLE</strong><p>
 
-<p>Regarding the third triple, our aim was to insert a <strong>link connecting our ArCo resource to an equivalent or nearly equivalent resource on Wikidata</strong>.</p>
+<p>Regarding the third triple, our aim was to insert a <strong>link connecting our ArCo resource to a correlated resource on Wikidata</strong>.</p>
 
-<p>In this instance, to determine the appropriate predicate, we used the answer of the <strong>initial zero-shot prompting with ChatGPT</strong>, which suggested <strong>owl:sameAs</strong>, a predicate already existing in ArCo.</p>
+<p>We weren't entirely clear on the difference between <strong>owl:sameAs</strong>and <strong>rdfs:seeAls</strong>strong>o. So, we asked ChatGPT to explain it to us using a <strong>zero-shot prompt</strong>strong>.
+
+<div class="image">
+  <img src="IMG/IMG_2043.JPG" alt="QUESTION TO CHATGPT">
+</div>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="IMG/IMG_2044.JPG" alt="OWL:SAMEAS" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+  <img src="IMG/IMG_2045.JPG" alt="RDFS:SEEALSO" 
+       style="width: 38%; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+</div>
 	
 <p>To achieve this, we searched for the names of the archaeological parks selected for our research within <strong>Wikidata's search bar</strong>. Unfortunately, the <strong>Parco archeologico di Canne della Battaglia</strong> was the only park for which we found <strong>no corresponding entry</strong> whatsoever on Wikidata; therefore, it will not be included in the proposed triples in this instance.<p>
 
-<p>In this manner, we were able to <strong>link two equivalent resources present in two different databases through a single triple</strong>. Useful data concerning the archaeological parks are embedded within these links.</p>
+<p>In this manner, we were able to <strong>link two correlated resources present in two different databases through a single triple</strong>. Useful data concerning the archaeological parks are embedded within these links.</p>
 
 <p><strong>To discover the detailed structure of the triples we have produced</strong>
 <a href="wikidatawebsite.html" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Click Here</a></p>
