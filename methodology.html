@@ -409,13 +409,106 @@ Archaeological Park: Parco archeologico di Siponto.</strong></p>
 <p>Furthermore, <strong>ChatGPT</strong> also provided information regarding the <strong>sources</strong> from which it retrieved the data (although this was not requested), whereas Gemini did not.</p>
 
 <p>It is now necessary to focus on <strong>determining the conservation status of the Parco archeologico di Saturo.</strong>
-<p>Despite announced restoration works and projects (such as those restarted in <strong>October 2024</strong>, with inauguration initially planned for September 2024), the current situation of the Archaeological Park of Saturo presents <strong>severe critical issues</strong>. The reopening was limited to a single day (June 19, 2024) for guided tours of the construction site, and as of today (June 2025), a simple Google search reveals <strong>the park is temporarily closed</strong> and inaccessible to tourists.<p>
 
-<p>Furthermore, research from <strong>2022</strong> indicates that the Park was overrun by weeds, posing a high risk of fires due to high temperatures, and showed remains of food and used beverages. Unauthorised crossings of the cliff through the Park were also observed, with archaeological remains being trampled, even by bicycles, highlighting a <strong>serious lack of control and protection</strong>.</p>
+<p>For this reason, we decided to <strong>directly query LLMs</strong> to thoroughly analyze the main factors influencing the conservation status of archaeological parks. Consequently, we opted to employ a <strong>chain-of-thought prompting</strong> approach, which we present below.</p>
 
-<p>Notwithstanding the efforts and funding for ongoing restoration work, the actual usability, safety, and protection of the Parco archeologico di Saturo are severely compromised. The continued closure to the public and persistent management and degradation issues confirm a classification of <strong>BadConservationStatus</strong>, <strong>confirming ChatGPT evaluation</strong>.</p>
+<p><strong>QUESTION:</strong></p>
 
-<p style="margin-top: 50px;">
+<p><strong>What are the main factors that influence the state of conservation of archaeological parks? Start by identifying natural and environmental risks (such as erosion, pollution, and climate change), then consider the impact of human activities (tourism, urban development, and vandalism), and finally explore the conservation and management strategies adopted to protect these sites. Please just consider the Parco Archeologico di Saturo in Apulia, Italy.</strong></p>
+
+<p><strong>ANSWER:</strong></p>
+
+<table>
+  <tr>
+    <th>ChatGPT</th>
+    <th>Gemini</th>
+   </tr>
+  <tr>
+    <td>
+	 Here is a detailed analysis of the main factors influencing the state of conservation of the Parco Archeologico di Saturo (Leporano, Apulia), structured by category:
+
+      <p><strong>1. Natural and Environmental Risks</strong></p>
+      <p><strong>-Coastal and atmospheric erosion:</strong>The park is located on a coastal promontory exposed to wind, rain, and sea spray. These factors contribute to the deterioration of archaeological structures, stone walls, and mosaics.</p>
+      <p><strong>-Mediterranean climate and climate change:</strong>Increased temperature fluctuations, droughts, and heavy rainfall linked to climate change accelerate material decay, especially in stone and mortar. They also promote the growth of invasive vegetation and water infiltration.</p>
+      <p><strong>-Invasive vegetation and wildfires:</strong> Uncontrolled dry grasses and shrubs can physically damage structures and significantly raise the risk of fire, especially during the summer months.</p>
+	  
+      <p><strong>2. Impact of Human Activities</strong></p>
+      <p><strong>-Tourism and guided visits:</strong> While tourism is essential for awareness and funding, excessive or unregulated foot traffic can cause erosion of paths, degradation of mosaics, and general wear of ancient remains. Since 2006, visits have been managed by the local cooperative PoliSviluppo, but infrastructure remains limited.</p>
+      <p><strong>-Urban development and nearby infrastructure</strong>: Surrounding buildings, old bunkers, and nearby recreational structures (like bars and picnic areas) create visual and environmental disturbances and risk altering the archaeological context.</p>
+      <p><strong>-Vandalism and neglect:</strong> In recent years, several reports have highlighted neglect, including overgrown vegetation, lack of signage, and minimal maintenance—factors that facilitate further damage and discourage public interest.</p>
+
+      <p><strong>3. Conservation and Management Strategies</strong></p>
+      <p><strong>-Structural restoration and infrastructure projects:</strong> Recent interventions (2018–2021) have included efforts to restore and consolidate certain sections of the site, particularly the Greek and Roman phases of the settlement, the sanctuary, and the cisterns.</p>
+      <p><strong>-Vegetation control:</strong> Maintenance plans include regular mowing and clearing of invasive plants, though consistency and funding remain challenges.</p>
+      <p><strong>-Cultural enhancement and awareness:</strong> Educational initiatives, archaeological workshops, and guided tours aim to raise awareness of the site’s historical value and foster a sense of community responsibility.</p>
+      <p><strong>-Collaboration with local institutions:</strong> The Municipality of Leporano, in partnership with the Superintendence and regional cultural bodies, continues to promote the park through seasonal events and funding proposals.</p>
+      
+	  <p>In summary, the conservation of the Parco Archeologico di Saturo is challenged by both natural forces—especially erosion and climate—and by human pressures such as unmanaged tourism and insufficient maintenance. However, ongoing restoration efforts, community involvement, and educational outreach offer a promising framework for its long-term protection.</p>
+</td>
+<td>
+    The Archaeological Park of Saturo in Apulia, Italy, is a historical site facing several conservation challenges, stemming from both natural factors and human activity.
+     <p><strong>Natural and Environmental Risks</strong></p>
+     <p>Its coastal location makes it particularly vulnerable to marine erosion, which can destroy exposed archaeological layers. Climate change poses a long-term threat, with rising temperatures, changing rainfall patterns, and sea-level rise all potentially damaging the site. While not always specifically detailed for Saturo, pollution is also a general risk for archaeological sites, potentially compromising material preservation.</p>
+     <p><strong>Impact of Human Activities</strong></p>
+     <p>Tourism, though vital, can cause physical wear and tear and microclimatic alterations if not properly managed. Uncontrolled urban development in the area surrounding the park has already encroached upon and destroyed archaeological deposits, altering the landscape. Finally, vandalism, including graffiti, looting, and illegal excavations, directly threatens the archaeological heritage.</p>
+	 <p><strong>Conservation and Management Strategies</strong></p>
+     <p>To protect the park, several strategies are essential: constant monitoring of the site's conditions, preventive conservation (e.g., drainage systems and vegetation control), and restoration and stabilization of damaged structures. Visitor management through defined paths and signage is crucial to minimize impact. Collaboration among various entities, securing funding (including European funds), and strict enforcement of laws are all vital to ensure the long-term protection of the Archaeological Park of Saturo.</p>
+    </td>
+</tr>
+  <tr>
+    <td>
+	<strong>Evaluation:</strong> It can be observed that ChatGPT provided a much more structured response, articulated across multiple main points with several sub-points for each. The length of the response indicates both accuracy and precision. 
+</td>
+    <td>
+    <strong>Evaluation:</strong> Unlike the other LLM, this one provided a less schematic and more discursive response. This isn't synonymous with inaccuracy, and it's still a good outcome, equivalent to ChatGPT's. The information it provides is certainly less, but it's still sufficient for what we wanted to know.
+</td>
+  </tr>
+ </table></br></br></br>
+
+<p style="margin-top: 10px;">
+<p>However, our objective was to <strong>ascertain the definitive conservation status</strong> to propose. Consequently, we formulated an additional specific inquiry.
+<p><strong>QUESTION:</strong></p>
+<p><strong>So how would you describe its conservation status? BadConservationStatus or MediocreConservationStatus?</strong></p>
+
+<p><strong>ANSWER:</strong></p>
+
+<table>
+  <tr>
+    <th>ChatGPT</th>
+    <th>Gemini</th>
+   </tr>
+  <tr>
+    <td>
+	 Why not "BadConservationStatus"?
+
+      <p><strong>-The site is accessible</strong> and regularly visited through guided tours.</p>
+      <p><strong>-Restoration efforts have taken place</strong> especially between 2018 and 2021, targeting structural elements and improving signage.</p>
+      <p>-There is a <strong>local cooperative (PoliSviluppo)</strong> that promotes educational activities and basic maintenance.</p>
+	  
+      <p>But it’s not in “Good” condition either, because:</p>
+      <p><strong>-Maintenance is inconsistent,</strong> with recurring issues like overgrown vegetation and lack of cleanliness.</p>
+      <p><strong>-Infrastructural support is minimal</strong>—facilities are limited, and parts of the site appear neglected.</p>
+      <p><strong>-Exposure to erosion, climate events, and occasional vandalism</strong> continue to threaten the preservation of archaeological materials.</p>
+      
+	  <p><strong>MediocreConservationStatus</strong> accurately reflects the site's condition: it is not abandoned or severely degraded, but it lacks the stable protection, continuous care, and infrastructure needed for long-term, sustainable conservation.</p>
+</td>
+<td>
+    Given its history of significant damage (especially from abusive urbanization) and constant natural threats like marine erosion and climate change, the conservation status of the Archaeological Park of Saturo can be described as <strong>MediocreConservationStatus.</strong>
+     <p>Despite these challenges, active and funded efforts are underway for the site's restoration, management, and valorization. This prevents classifying it as "BadConservationStatus," which would imply a lack of intervention. However, the inherent vulnerabilities and past damages keep it from achieving a "GoodConservationStatus."</p>
+     <p>Its coastal location makes it particularly vulnerable to marine erosion, which can destroy exposed archaeological layers. Climate change poses a long-term threat, with rising temperatures, changing rainfall patterns, and sea-level rise all potentially damaging the site. While not always specifically detailed for Saturo, pollution is also a general risk for archaeological sites, potentially compromising material preservation.</p>
+ </td>
+</tr>
+<tr>
+    <td>
+	<strong>Evaluation:</strong> It can be observed that, following thorough deliberation, <strong>ChatGPT reconsidered the conservation status</strong> it initially proposed for the Parco Archeologico di Saturo after the few-shot prompting. 
+</td>
+    <td>
+    <strong>Evaluation:</strong> Conversely, <strong>Gemini</strong> consistently maintained its <strong>coherence.</strong>
+</td>
+  </tr>
+</table></br></br></br>
+
+<p style="margin-top: 10px;">
 
 <p>Now, let us analyze the responses for the other three archaeological parks from the two LLMs.</p>
 
