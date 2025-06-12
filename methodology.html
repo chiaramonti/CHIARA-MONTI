@@ -319,11 +319,11 @@ WHERE {
 
 <p><strong>RESEARCH FOR THE SECOND TRIPLE</strong><p>
 
-<p>Subsequently, we focused on proposing the insertion of a triple related to the conservation status. ChatGPT's response had provided us with an interesting insight on the general condition, but we aimed to include the type of conservation status, which required a more specific predicate.</p> 
+<p>Subsequently, we focused on proposing the insertion of a triple related to the conservation status. ChatGPT's response had provided us with an interesting insight. However, we aimed to test the <strong>few-shot prompting technique</strong> by analyzing whether the LLMs would yield the label used in ArCo, providing as an example the label used in ARCO to indicate the material.</p> 
 
-<p>For this reason, using the technique of <strong>zero-shot prompting</strong>, we asked both ChatGPT and Gemini which label was used in ARCO to indicate the <strong>type of conservation status</strong>, providing as an example the label used in ARCO to indicate the material. Presented below are the question posed to the LLMs and their corresponding responses.</strong></p>
+<p>Presented below are the question posed to the LLMs and their corresponding responses.</strong></p>
 
-<p><strong>Q: Given that on ArCo the property for material is arco-dd:hasMaterial, what is the property for the conservation status type of cultural properties?</strong></p>
+<p><strong>Q: Given that on ArCo the property for material is arco-dd:hasMaterial, what is the property for the conservation status of cultural properties?</strong></p>
 <p><strong>A:</strong>
 <table>
   <tr>
@@ -332,31 +332,21 @@ WHERE {
    </tr>
   <tr>
     <td>
-	The property for the conservation status type of cultural properties in ArCo is arco-dd:hasConservationStatusType.
+	In the ArCo (Architecture of Knowledge) ontology for cultural heritage in Italy, the property used to represent the conservation status of a cultural property is:
 	
-      <p>This property is used to specify the type of conservation status (e.g., “good”, “poor”, “restored”) within the conservation status description, which itself is linked to the cultural property via arco-dd:hasConservationStatus.</p>
+      <p>arco-dd:hasConservationStatus</p>
 	  
-      <p>So the full path is:</p>
-
-      <p>Cultural property → arco-dd:hasConservationStatus → Conservation Status → arco-dd:hasConservationStatusType → Conservation Status Type (e.g., a concept from a controlled vocabulary).</p>
+      <p>This property links a cultural property (such as an artwork or monument) to an instance of a conservation status, which typically includes information about the condition, integrity, or preservation state of the item.</p>
 </td>
     <td>
-    On ArCo, the property used to describe the conservation status of cultural properties is arco-dd:hasConservationStatus.
-	  
-	  <p>This property links a cultural property to an instance of arco-dd:ConservationStatus, which then has a core:hasType property that specifies the arco-dd:ConservationStatusType (e.g., GoodConservationStatus, MediocreConservationStatus, etc.).</p>
-	  
-	  <p>So, the full path to get to the type of conservation status would typically be:</p>
-	  
-	  <p>CulturalProperty arco-dd:hasConservationStatus ?conservationStatusInstance.
-	  ?conservationStatusInstance core:hasType ?conservationStatusType .</p>
-    </td>
+    Given that on ArCo the property for material is arco-dd:hasMaterial, the property for the conservation status of cultural properties is arco-dd:hasConservationStatus.
   </tr>
   <tr>
     <td>
-	<strong>Evaluation:</strong> The clarity of this LLM's response is undeniable, providing the sought-after answer promptly before delving into comprehensive details. It is worth noting, however, that it does not include, despite not being explicitly requested, any illustrative examples of the conservation status types available on ArCo.
+	<strong>Evaluation:</strong> In this instance, it delves into greater detail because, in addition to providing the label, it also specifies what the conservation status assessment on ArCo includes.
 </td>
     <td>
-    <strong>Evaluation:</strong> Unlike the former, this LLM's response does not proceed directly to the desired information. Instead, it first presents a broader property, only then disclosing the specific property that was requested. Moreover, it includes several illuminating examples, which are beneficial for grasping the array of conservation status types found in ArCo.
+    <strong>Evaluation:</strong> This answer is very concise and gets straight to the point. It perfectly and succinctly provides the answer to the question.
 </td>
   </tr>
  </table></br></br></br>
