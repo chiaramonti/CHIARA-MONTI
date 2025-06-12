@@ -17,7 +17,30 @@
 </nav>
 
 <h1>Conclusion</h1>
-<p>xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx...</p>
+<p><strong>Problems & Solutions</strong></p>
+
+<p>During the development of the project, <strong>several challenges were encountered</strong>, which required us to identify and implement <strong>effective solutions</strong> to successfully complete our work.</p>
+
+<p><strong>1.HTML Layout Implementation</strong></p>
+As none of us had prior experience with HTML, initially designing the layout to our satisfaction proved to be quite challenging. To overcome this, <strong>we sought assistance from artificial intelligence</strong>, which guided us through specific steps and recommended techniques to achieve the desired results. For example, it helped us understand <strong>how to structure div elements and apply CSS styles</strong> effectively. 
+
+<p><strong>2.Creation of Triples: Missing Data in Wikidata</strong></p>
+One significant issue we faced was the creation of triples linking the archaeological park's website to its corresponding Wikidata entry. Unfortunately, <strong>the website of the Parco Archeologico di Canne della Battaglia is not currently represented in Wikidata</strong>. Consequently, we were <strong>unable to create this particular link</strong>.
+
+<p><strong>3.Determining the Conservation Status of the Archaeological Park of Saturo</strong></p>
+While constructing the triples, we needed to identify the conservation status of the archaeological parks under study. To do so, we queried two different large language models (LLMs), Chatgpt and Gemini, regarding the <strong>status of the Parco Archeologico di Saturo</strong>, but <strong>the models provided conflicting information.</strong> This discrepancy complicated the task of determining the "correct" status. Therefore, we applied one of the key principles in the development of our project—namely, <strong>the chain of thought approach</strong>. By posing a series of targeted questions to the two language models, we were ultimately <strong>able to reach a shared and consistent conclusion</strong> regarding the conservation status of the archaeological park, which we assessed as MediocreConservationStatus. Although the initial responses provided by the two LLMs differed, through a process of iterative questioning and clarification, they eventually aligned on the same final assessment.
+
+<p><strong>4.Linking the Triples: Use of Standard Ontologies</strong></p>
+Finally, another initial challenge was how to correctly link the triples. This task was undertaken after the selection of our topic and the general framework of the project. To address this, we <strong>consulted ChatGPT to determine the proper predicates and formats</strong> for linking resources such as websites and geographic coordinates. It recommended the use of standard ontologies, such as <strong>owl:sameAs</strong> for linking equivalent entities, <strong>geo:lat / geo:long</strong> for geographical coordinates. Regarding the conservation status, since this information was already available on the Arco platform, we simply referenced it directly, by using the predicate <strong>a-dd:hasConservationStatus.</strong>
+
+<p style="margin-top: 50px;">
+
+<p><strong>Conclusions</strong></p>
+In conclusion, this project allowed us to <strong>explore the potential of combining cultural heritage ontologies with the capabilities of LLMs to enrich underrepresented areas of the ARCO knowledge base.</strong> Through a process of collaborative research, critical evaluation, and digital implementation, we deepened our understanding of both the technical and conceptual challenges involved in semantic enrichment. Our work on archaeological parks not only highlights the <strong>value of interdisciplinary approaches</strong>, but also demonstrates how <strong>digital tools can contribute meaningfully to the preservation and dissemination of cultural heritage</strong> in contemporary contexts.
+
+<div class="image">
+  <img src="IMG/IMG_2042.JPG" alt="Parco Canne">
+</div>
 
 <script>
   const page = window.location.pathname.split("/").pop();
