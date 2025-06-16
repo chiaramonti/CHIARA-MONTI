@@ -81,7 +81,6 @@ LIMIT 100
     <td>
       The query retrieves up to 100 cultural properties that are labeled as “parco archeologico”, 
       along with their labels and any available images, sorted alphabetically by name. <br><br>
-      However, the results of this query were too general for our investigation, so we decided to formulate another query that investigated the class <strong>ArchaeologicalParks</strong>.<br><br>
       <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel+%3Fdepiction%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3ACulturalProperty+.%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0AOPTIONAL+%7B%3Fcp+foaf%3Adepiction+%3Fdepiction%7D%0D%0A%7D%0D%0AORDER+BY+%28%3Flabel%29%0D%0ALIMIT+100%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
     </td>
   </tr>
