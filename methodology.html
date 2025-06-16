@@ -132,7 +132,7 @@ LIMIT 100
     </td>
     <td>
       Unfortunately, this query does not return any results, as the ArCo database does not contain archaeological parks associated with the regions of Sicily (regional identifier: 19) and Sardinia (regional identifier: 20).<br><br>
-      Therefore, I decided to pursue another line of research, this time focusing on two neighboring southern Italian regions: Apulia (regional identifier: 16) and Basilicata (regional identifier: 17).<br><br>
+      Therefore, we decided to pursue another line of research, this time focusing on two neighboring southern Italian regions: Apulia (regional identifier: 16) and Basilicata (regional identifier: 17).<br><br>
       <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A+%0D%0ASELECT+DISTINCT+%3Fcp+%3Flabel%0D%0AWHERE%0D%0A%7B%3Fcp+rdfs%3Alabel+%3Flabel+%3B%0D%0Ardf%3Atype+arco%3AArchaeologicalProperty%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2220%22+%7D%0D%0AUNION%0D%0A%7B%3Fcp+arco%3AregionIdentifier+%2219%22+%7D%0D%0A%0D%0AFILTER%28REGEX%28%3Flabel+%2C+%22parco+archeologico%22+%2C+%22i%22%29%29%0D%0A%7D%0D%0AORDER+BY+%3Flabel%0D%0ALIMIT+100%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">View Result</a>
     </td>
   </tr>
